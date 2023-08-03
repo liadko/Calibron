@@ -82,16 +82,6 @@ void drawPiece(sf::RenderWindow& window, const Placement& placement)
     window.draw(rect);
 }
 
-//void highlightTile(sf::RenderWindow& window, Coord coord)
-//{
-//    sf::RectangleShape tile(v2f(rectScalingFactor, rectScalingFactor));
-//    tile.setPosition(gridPos + (v2f)(coord * rectScalingFactor));
-//    tile.setFillColor(sf::Color(50, 255, 100));
-//
-//    window.draw(tile);
-//
-//}
-
 //void saveScreenshot(const sf::RenderWindow& window, int number)
 //{
 //

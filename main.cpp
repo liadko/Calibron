@@ -3,15 +3,11 @@
 
 
 
-
-
 int main()
 {
 	//Window
 	sf::RenderWindow window(sf::VideoMode(width, height), "Program", sf::Style::Close, sf::ContextSettings(24, 8, 8));
 	//window.setFramerateLimit(100);
-
-	//sf::Clock clock;
 
 	cout << "Calibron 12\n\n";
 
@@ -41,36 +37,19 @@ int main()
 					backtrack();
 
 
-		//const auto& mousePos = sf::Mouse::getPosition(window);
-
-
 		//Algorithm
 		if (advancing)
 		{
-			//auto start(clock.getElapsedTime().asMilliseconds());
-
-
-			//while(true)
+			
 			//for (int i = 0; i < 5000 && advancing; i++)
 				if (advance())
 				{
 					cout << "Puzzle is solved. Press 'B' to backtrack and look for a symmetry of the solution.\n";
+					
 					advancing = false;
 
-
-					//draw(window); //draw the finished frame
-					//solvedCount++;
-					//saveScreenshot(window, solvedCount);
-					//try backtrack, stop advancing if can't
-					//backtrack();
-
 				}
-
-
-
-		//auto end(clock.getElapsedTime().asMilliseconds());
-		//advancing = false;
-		//std::cout << end - start << '\n';
+		
 		}
 
 
@@ -82,3 +61,14 @@ int main()
 
 	return 0;
 }
+
+//Timing code:
+
+//sf::Clock clock;
+
+//auto start(clock.getElapsedTime().asMilliseconds());
+// 
+// perform
+// 
+//auto end(clock.getElapsedTime().asMilliseconds());
+//std::cout << end - start << '\n';

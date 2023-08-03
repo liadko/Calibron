@@ -3,7 +3,7 @@
 #include "header.h"
 
 
-//Piece Struct
+// Piece Struct
 
 
 Piece::Piece() : w(-1), h(-1) {}
@@ -16,28 +16,8 @@ bool Piece::operator==(const Piece& other) const
 
 
 
-//Placement Struct
+// Placement Struct
 
-
-//Placement::Placement() : pieceIndex(0), data(0) {}
-//Placement::Placement(int sizeIndex, Coord pos, bool rotated) {
-//
-//	pieceIndex = sizeIndex;
-//
-//	int w = pieceSizes[sizeIndex].w;
-//	int h = pieceSizes[sizeIndex].h;
-//	if (rotated)
-//	{
-//		int temp = w;
-//		w = h;
-//		h = temp;
-//	}
-//
-//	data = w;
-//	data |= h << 8;
-//	data |= pos.x << 16;
-//	data |= pos.y << 24;
-//}
 
 Placement::Placement(int x, int y) //tile constructor
 	: data(1 | (1 << 8) | (x << 16) | (y << 24)), pieceIndex(-1) {}
@@ -108,9 +88,10 @@ void Placement::rotate()
 }
 
 
-/// 
-/// State Struct
-///
+
+
+// State Struct
+
 
 State::State() : availablePieces((1 << pieceCount) - 1), lastPlacementData(-1) {}
 
@@ -122,16 +103,6 @@ void State::place(const Placement& placement)
 	availablePieces &= ~(1 << placement.pieceIndex); //take out of available pieces
 
 }
-
-//int State::pieceCount()
-//{
-//	int c = 0;
-//	int pos = 1;
-//	for (int i = 0; i < pieceCount; i++, pos <<= 1)
-//		if ((availablePieces & pos) == 0)
-//			c++;
-//	return c;
-//}
 
 bool State::fits(const Placement& placement) const
 {
