@@ -54,7 +54,7 @@ struct State {
 void initOutlineShape();
 void drawGrid(sf::RenderWindow& window);
 void drawPiece(sf::RenderWindow& window, const Placement& placement);
-//void saveScreenshot(const sf::RenderWindow& window, int index);
+void saveScreenshot(const sf::RenderWindow& window);
 void draw(sf::RenderWindow& window);
 
 //Algorithm

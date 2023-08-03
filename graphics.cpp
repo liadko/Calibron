@@ -82,19 +82,19 @@ void drawPiece(sf::RenderWindow& window, const Placement& placement)
     window.draw(rect);
 }
 
-//void saveScreenshot(const sf::RenderWindow& window, int number)
-//{
-//
-//    sf::Texture screenshot;
-//    screenshot.create(width, height);
-//    screenshot.update(window);
-//    std::string filename = "Screenshots/screenshot " + std::to_string(number) + ".png";
-//    if (screenshot.copyToImage().saveToFile(filename))
-//    {
-//        std::cout << "Big Success In Screenshot\n";
-//    }
-//    
-//}
+void saveScreenshot(const sf::RenderWindow& window)
+{
+
+    sf::Texture screenshot;
+    screenshot.create(width, height);
+    screenshot.update(window);
+    std::string filename = "Screenshots/screenshot " + std::to_string(rand()) + ".png";
+    if (screenshot.copyToImage().saveToFile(filename))
+    {
+        std::cout << "Big Success In Screenshot\n";
+    }
+    
+}
 
 //draw all pieces and the grid
 void draw(sf::RenderWindow& window)

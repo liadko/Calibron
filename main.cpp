@@ -13,7 +13,8 @@ int main()
 
 	cout << "Click: advance one move.\n";
 	cout << "Space: advance until solved.\n";
-	cout << "Press B: backtrack.\n\n\n";
+	cout << "Press B: backtrack.\n\n";
+	cout << "Press S: screenshot.\n\n";
 
 	initOutlineShape();
 
@@ -35,6 +36,8 @@ int main()
 					advancing ^= true;
 				else if (event.key.code == sf::Keyboard::B)
 					backtrack();
+				else if (event.key.code == sf::Keyboard::S)
+					saveScreenshot(window);
 
 
 		//Algorithm
