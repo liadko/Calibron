@@ -45,7 +45,6 @@ struct State {
     
     State();
     void place(const Placement& placement);
-    //int pieceCount();
     bool fits(const Placement& placement) const;
     void addLastPlacementToForbidden();
 };
@@ -55,14 +54,12 @@ struct State {
 void initOutlineShape();
 void drawGrid(sf::RenderWindow& window);
 void drawPiece(sf::RenderWindow& window, const Placement& placement);
-//void highlightTile(sf::RenderWindow& window, Coord coord);
 //void saveScreenshot(const sf::RenderWindow& window, int index);
 void draw(sf::RenderWindow& window);
 
 //Algorithm
 bool advance();
 bool clash(const Placement& p1, const Placement& p2);
-//State stateWith(State state, Placement placement);
 bool backtrack();
 
 //game
