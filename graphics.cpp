@@ -4,7 +4,7 @@
 
 
 sf::RectangleShape rect, outline;
-v2f gridPos;
+v2f gridPos(-1, -1);
 
 Piece pieceSizes[pieceCount] =
 {
@@ -27,7 +27,6 @@ Piece pieceSizes[pieceCount] =
 //create the shape of the grid outline
 void initOutlineShape()
 {
-    gridPos = v2f(width / 2 - gridWidth / 2, height / 2 - gridHeight / 2);
     outline.setSize(v2f(gridWidth, gridHeight));
     outline.setPosition(gridPos);
     outline.setFillColor(sf::Color::Transparent);
@@ -58,6 +57,9 @@ void drawGrid(sf::RenderWindow& window)
         window.draw(gridLine);
     }
 
+    //outline
+    window.draw(outline);
+
 }
 
 
@@ -80,6 +82,7 @@ void drawPiece(sf::RenderWindow& window, const Placement& placement)
     if(placement.pieceIndex >= 12)
         rect.setFillColor(sf::Color(0x002040FF));
     window.draw(rect);
+
 }
 
 void saveScreenshot(const sf::RenderWindow& window)
@@ -99,15 +102,24 @@ void saveScreenshot(const sf::RenderWindow& window)
 //draw all pieces and the grid
 void draw(sf::RenderWindow& window)
 {
+    //initialize the grid and outline sizes
+    if (gridPos.x == -1)
+    {
+        gridPos = v2f(width / 2 - gridWidth / 2, height / 2 - gridHeight / 2);
+        initOutlineShape();
+    }
+
+
+
     window.clear();
 
     
     for (const Placement& placement : mainState.placements)
         drawPiece(window, placement);
 
+
     drawGrid(window);
 
-    window.draw(outline);
-
+    
     window.display();
 }

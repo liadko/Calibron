@@ -16,10 +16,9 @@ int main()
 	cout << "Press B: backtrack.\n\n";
 	cout << "Press S: screenshot.\n\n";
 
-	initOutlineShape();
+	
 
 	bool advancing = false;
-	int solvedCount = 0;
 
 	//Main Loop
 	while (window.isOpen())
@@ -64,6 +63,7 @@ int main()
 
 	return 0;
 }
+
 
 //Timing code:
 
