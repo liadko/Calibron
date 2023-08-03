@@ -7,5 +7,8 @@ Only one solution exists. (8 if you count the symmetries)
 
 
 ### Instructions
-Left Click: advance one move
-Space: advance until the solution is found
+Mouse Click: advance one move.
+
+Space: advance until the solution is found.
+
+Press B:  backtrack - revert to last guess, and guess differently next time.
