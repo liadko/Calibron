@@ -1,6 +1,4 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <format>
+
 #include "header.h"
 
 
@@ -116,7 +114,6 @@ void draw(sf::RenderWindow& window)
     
     for (const Placement& placement : mainState.placements)
         drawPiece(window, placement);
-
 
     drawGrid(window);
 

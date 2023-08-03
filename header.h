@@ -1,8 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 using v2f = sf::Vector2f;
+using std::vector;
+using std::cout;
 
 struct Piece
 {

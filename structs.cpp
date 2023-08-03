@@ -1,13 +1,10 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
+
 #include <algorithm>
 #include "header.h"
 
-using v2f = sf::Vector2f;
 
-//
-//Piece
-//
+//Piece Struct
+
 
 Piece::Piece() : w(-1), h(-1) {}
 Piece::Piece(int w, int h) : w(w), h(h) {}
@@ -17,9 +14,10 @@ bool Piece::operator==(const Piece& other) const
 	return w == other.w && h == other.h;
 }
 
-//
-//Placement
-//
+
+
+//Placement Struct
+
 
 //Placement::Placement() : pieceIndex(0), data(0) {}
 //Placement::Placement(int sizeIndex, Coord pos, bool rotated) {
@@ -40,6 +38,7 @@ bool Piece::operator==(const Piece& other) const
 //	data |= pos.x << 16;
 //	data |= pos.y << 24;
 //}
+
 Placement::Placement(int x, int y) //tile constructor
 	: data(1 | (1 << 8) | (x << 16) | (y << 24)), pieceIndex(-1) {}
 
@@ -109,6 +108,10 @@ void Placement::rotate()
 }
 
 
+/// 
+/// State Struct
+///
+
 State::State() : availablePieces((1 << pieceCount) - 1), lastPlacementData(-1) {}
 
 void State::place(const Placement& placement)
@@ -129,8 +132,6 @@ void State::place(const Placement& placement)
 //			c++;
 //	return c;
 //}
-
-
 
 bool State::fits(const Placement& placement) const
 {

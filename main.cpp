@@ -1,8 +1,3 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
-
-using std::vector;
-using std::cout;
 
 #include "header.h"
 
@@ -18,20 +13,16 @@ int main()
 
 	//sf::Clock clock;
 
-	cout << "Calibron 12: Invented by Theodore Edison (son of tommy).\n";
-	cout << "Goal: Fit all 12 pieces into a perfect square.\n";
-	cout << "Only one solution, 8 if you count the symmetries.\n\n";
+	cout << "Calibron 12\n\n";
 
-	cout << "Left Click: advance one move.\n";
-	//cout << "Right Click: backtrack - go back to last time you weren't sure about what to do\n";
-	//cout<< "and remember not to repeat what you did.\n";
-	cout << "Space: advance until completion.\n";
-
+	cout << "Click: advance one move.\n";
+	cout << "Space: advance until solved.\n";
+	cout << "Press B: backtrack.\n\n\n";
 
 	initOutlineShape();
 
 	bool advancing = false;
-	//int solvedCount = 0;
+	int solvedCount = 0;
 
 	//Main Loop
 	while (window.isOpen())
@@ -60,22 +51,20 @@ int main()
 
 
 			//while(true)
-			//for (int i = 0; i < 5000; i++)
-			if (advance())
-			{
-				cout << "Puzzle is solved. Right click to backtrack and look for another solution.\n";
-				advancing = false;
-				//break;
+			//for (int i = 0; i < 5000 && advancing; i++)
+				if (advance())
+				{
+					cout << "Puzzle is solved. Press 'B' to backtrack and look for a symmetry of the solution.\n";
+					advancing = false;
 
 
-				//draw(window); //draw the finished frame
-				//solvedCount++;
-				//saveScreenshot(window, solvedCount);
-				//try backtrack, stop advancing if can't
-				//backtrack();
+					//draw(window); //draw the finished frame
+					//solvedCount++;
+					//saveScreenshot(window, solvedCount);
+					//try backtrack, stop advancing if can't
+					//backtrack();
 
-			}
-			//else break;
+				}
 
 
 

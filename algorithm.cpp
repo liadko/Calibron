@@ -1,32 +1,9 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
+
 #include "header.h"
 
 
 State mainState;
 std::vector<State> states;
-
-// code stolen from ChatGPT
-bool clash(const Placement& p1, const Placement& p2)
-{
-	sf::Vector2i p1pos(p1.getX(), p1.getY());
-	sf::Vector2i p2pos(p2.getX(), p2.getY());
-
-	int p1Right = p1pos.x + p1.getW();
-	int p1Bottom = p1pos.y + p1.getH();
-	int p2Right = p2pos.x + p2.getW();
-	int p2Bottom = p2pos.y + p2.getH();
-
-	if (p1pos.x >= p2Right || p2pos.x >= p1Right) {
-		return false; // No horizontal overlap
-	}
-
-	if (p1pos.y >= p2Bottom || p2pos.y >= p1Bottom) {
-		return false; // No vertical overlap
-	}
-
-	return true; // Overlapping
-}
 
 
 // place something on the board
@@ -88,11 +65,13 @@ bool advance()
 		}
 	}
 
-	//couldn't place piece in the tile, current state is invalid
+	//stuck
+	//couldn't place any piece in the tile, current state is invalid
 	return backtrack();
 
 }
 
+//revert to last guess, and remember to guess differently next time.
 bool backtrack()
 {
 	//std::cout << "Backtracking\n";
@@ -106,10 +85,31 @@ bool backtrack()
 	mainState = states.back();
 	states.pop_back();
 
-	//remember not to enter it
+	//remember not to enter it next time
 	mainState.addLastPlacementToForbidden();
 
 	return advance();
 }
 
 
+// code stolen from ChatGPT
+bool clash(const Placement& p1, const Placement& p2)
+{
+	sf::Vector2i p1pos(p1.getX(), p1.getY());
+	sf::Vector2i p2pos(p2.getX(), p2.getY());
+
+	int p1Right = p1pos.x + p1.getW();
+	int p1Bottom = p1pos.y + p1.getH();
+	int p2Right = p2pos.x + p2.getW();
+	int p2Bottom = p2pos.y + p2.getH();
+
+	if (p1pos.x >= p2Right || p2pos.x >= p1Right) {
+		return false; // No horizontal overlap
+	}
+
+	if (p1pos.y >= p2Bottom || p2pos.y >= p1Bottom) {
+		return false; // No vertical overlap
+	}
+
+	return true; // Overlapping
+}
